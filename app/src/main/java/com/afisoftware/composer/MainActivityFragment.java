@@ -30,6 +30,7 @@ public class MainActivityFragment extends Fragment {
     private MediaPlayer player;
     private Handler playbackRefreshHandler;
     private String totalPlaybackTime;
+    private boolean draggingPlaybackBar = false;
 
     public MainActivityFragment() {
     }
@@ -39,6 +40,27 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
+        playbackBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                draggingPlaybackBar = true;
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                draggingPlaybackBar = false;
+                if (isPlaying()) {
+                    player.seekTo(seekBar.getProgress());
+                } else {
+                    showStoppedPlayback();
+                }
+            }
+        });
         return view;
     }
 
@@ -101,7 +123,9 @@ public class MainActivityFragment extends Fragment {
 
     private void refreshPlayingPlayback() {
         int currentPlaybackMillis = player.getCurrentPosition();
-        playbackBar.setProgress(currentPlaybackMillis);
+        if (!draggingPlaybackBar) {
+            playbackBar.setProgress(currentPlaybackMillis);
+        }
         playbackTime.setText(formatMillis(currentPlaybackMillis) + " / " + totalPlaybackTime);
     }
 
