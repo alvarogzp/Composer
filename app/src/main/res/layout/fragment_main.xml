@@ -11,12 +11,42 @@
     tools:context="com.afisoftware.composer.MainActivityFragment"
     tools:showIn="@layout/activity_main">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="100dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/playback_layout">
+
+        <TextView
+            android:text="Stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playback_state" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/playback_bar" />
+
+        <TextView
+            android:text="00:00 / 00:00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/playback_time" />
+    </LinearLayout>
+
     <Button
         android:text="PLAY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/button" />
+        android:id="@+id/button"
+        android:layout_marginBottom="101dp"
+        android:layout_above="@+id/playback_layout"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
