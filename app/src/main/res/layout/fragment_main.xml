@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
     android:layout_width="match_parent"
@@ -10,6 +11,48 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.afisoftware.composer.MainActivityFragment"
     tools:showIn="@layout/activity_main">
+
+    <Button
+        android:text="Choose music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/select_file_button"
+        android:layout_marginBottom="75dp"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/playback_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/linearLayout">
+
+        <TextView
+            android:text="Demo sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/audio_name"
+            android:textAllCaps="false"
+            android:textStyle="normal|bold"
+            android:textAlignment="center" />
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_media_play"
+            android:id="@+id/play_button"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -23,7 +66,7 @@
         android:id="@+id/playback_layout">
 
         <TextView
-            android:text="Stop"
+            tools:text="Stopped"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/playback_state" />
@@ -34,19 +77,10 @@
             android:id="@+id/playback_bar" />
 
         <TextView
-            android:text="00:00 / 00:00"
+            tools:text="00:00 / 00:00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/playback_time" />
     </LinearLayout>
-
-    <Button
-        android:text="PLAY"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_marginBottom="101dp"
-        android:layout_above="@+id/playback_layout"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
